@@ -1,0 +1,43 @@
+# Kopieren nach config.yaml und anpassen. Secrets (API-Schluessel, RCON-Passwort)
+# stehen nie hier, sondern in Umgebungsvariablen bzw. in .env.
+
+server:
+  host: dein-server.nitrado.net   # Adresse des Minecraft-Servers
+  port: 25565
+  auth: microsoft                 # online-mode; "offline" nur fuer lokale Testserver
+  version: "26.1"                 # muss zur Serverversion passen
+
+rcon:
+  host: dein-server.nitrado.net
+  port: 25575                     # RCON-Port aus dem Nitrado-Webinterface
+  passwordEnv: RCON_PASSWORD
+  pollIntervalMs: 3000
+
+npcs:
+  - username: DeinNpcKonto        # Minecraft-Name des NPC-Kontos
+    displayName: Bjarne
+    personality: >-
+      Ruhiger, hilfsbereiter Holzfaeller, etwas misstrauisch gegenueber Fremden,
+      spricht knapp und mit trockenem Humor.
+
+llm:
+  allowPaid: false                # kostenpflichtige Anbieter nur mit ausdruecklicher Freigabe
+  usageLogPath: data/llm-usage.jsonl
+  providers:
+    # Reihenfolge = Prioritaet. Limits vor dem Start mit den aktuellen Gratis-Kontingenten abgleichen.
+    - name: groq
+      baseUrl: https://api.groq.com/openai/v1
+      apiKeyEnv: GROQ_API_KEY
+      model: llama-3.3-70b-versatile
+      limits: { requestsPerMinute: 25, requestsPerDay: 900 }
+    - name: cerebras
+      baseUrl: https://api.cerebras.ai/v1
+      apiKeyEnv: CEREBRAS_API_KEY
+      model: llama-3.3-70b
+      limits: { requestsPerMinute: 25, requestsPerDay: 900, tokensPerDay: 900000 }
+
+chat:
+  perPlayerCooldownMs: 15000
+  maxReplyChars: 200
+
+dataDir: data

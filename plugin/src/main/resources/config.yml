@@ -1,0 +1,7 @@
+# Minecraft-Namen der Konten, die als NPC auftreten duerfen.
+# Ein hier eingetragenes Konto kommt nur auf den Server, nachdem "npc spawn <name>" ausgefuehrt wurde.
+npcs:
+  - DeinNpcKonto
+
+# Sekunden, die ein NPC nach "npc despawn" zum geordneten Abmelden hat, bevor er gekickt wird.
+despawn-grace-seconds: 5

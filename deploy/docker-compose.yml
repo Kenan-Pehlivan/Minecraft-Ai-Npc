@@ -1,0 +1,23 @@
+# Lokaler Testserver fuer Entwicklung und Szenario-Tests (nicht fuer Nitrado).
+# Start:  RCON_PASSWORD=test docker compose -f deploy/docker-compose.yml up
+# Vorher das Plugin bauen: (cd plugin && ./gradlew build)
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    environment:
+      EULA: "TRUE"
+      TYPE: SPIGOT
+      VERSION: "26.1"
+      ONLINE_MODE: "FALSE"     # nur lokal; die Runtime nutzt dann server.auth: offline
+      ENABLE_RCON: "TRUE"
+      RCON_PASSWORD: ${RCON_PASSWORD:?RCON_PASSWORD setzen}
+      MEMORY: 2G
+      DIFFICULTY: normal
+      MODE: survival
+      OPS: ""
+    ports:
+      - "25565:25565"
+      - "25575:25575"
+    volumes:
+      - ./data:/data
+      - ../plugin/build/libs/npcbridge-0.1.0.jar:/plugins/npcbridge-0.1.0.jar:ro

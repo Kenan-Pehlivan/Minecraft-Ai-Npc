@@ -20,7 +20,7 @@ dependencies {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(property("javaRelease").toString().toInt())
+    options.release.set(project.property("javaRelease").toString().toInt())
     options.encoding = "UTF-8"
 }
 

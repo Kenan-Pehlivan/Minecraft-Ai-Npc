@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+.vscode/
+plugin/build/
+plugin/.gradle/
+deploy/data/

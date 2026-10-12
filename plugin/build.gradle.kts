@@ -13,7 +13,8 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:${property("spigotApiVersion")}")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+    testImplementation(platform("org.junit:junit-bom:5.11.4"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("com.google.code.gson:gson:2.11.0")
 }

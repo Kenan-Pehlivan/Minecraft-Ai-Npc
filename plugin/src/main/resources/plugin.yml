@@ -1,0 +1,14 @@
+name: NpcBridge
+version: '${version}'
+main: de.kenanpehlivan.npcbridge.NpcBridgePlugin
+api-version: '1.21'
+description: Serverseitige Bruecke fuer autonome KI-NPCs (Freigabe, Rechte, Admin)
+commands:
+  npc:
+    description: KI-NPCs steuern
+    usage: /npc <spawn|despawn|stop|status|poll> [name]
+    permission: npcbridge.admin
+permissions:
+  npcbridge.admin:
+    description: NPCs erscheinen lassen, entfernen und stoppen
+    default: op
